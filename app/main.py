@@ -32,7 +32,7 @@ VERSION = "0.1.0"
 GOLDEN_BREATH_S = 5.2360679775
 GOLDEN_BREATH_HZ = 0.1909830056
 
-TAGLINE = "INHALE Memory Krystals → deterministically merge → EXHALE coherent sigil state (Kai-ordered)."
+TAGLINE = "INHALE Memory Krystals → determinate merge → EXHALE koherent sigil state (Kai-ordered)."
 
 PURPOSE = (
     "LAH-MAH-TOR is a Breath-native, Kai-time deterministic merge gate for Memory Krystals.\n\n"
@@ -44,7 +44,7 @@ PURPOSE = (
     "• state identity is expressed as a determinate seal\n"
     "• correctness does not depend on server clocks, arrival order, or Chronos timestamps\n\n"
     "Humans see the Portal (HTML). Machines see the Manifest and State (JSON). "
-    "One source. Two faces. One coherent breath."
+    "One source. Two faces. One koherent breath."
 )
 
 KAI_SPEC = {
