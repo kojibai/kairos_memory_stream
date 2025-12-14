@@ -26,7 +26,7 @@ from app.api.routes import router as sigils_router
 
 SERVICE_NAME = "LAH-MAH-TOR"
 SERVICE_CODENAME = "ATLANTEAN GATE · Φ-SEAL"
-VERSION = "0.1.0"
+VERSION = "3.9.0"
 
 # Breath unit (T = 3 + √5 seconds)
 GOLDEN_BREATH_S = 5.2360679775
