@@ -29,7 +29,7 @@ PURPOSE = (
     "It receives Memory Krystals (JSON proof objects), validates them (shape, required Kai-time fields, "
     "canonicalization, integrity markers), deduplicates repeats, and merges all valid entries into one coherent, "
     "global registry.\n\n"
-    "It then EXHALES the resulting truth as a deterministic state: the full merged registry plus a computed "
+    "It then EXHALES the resulting truth as a Determinate state: the full merged registry plus a computed "
     "‘latest’ view, ordered strictly by Kai-time (pulse → beat → stepIndex). No Chronos ordering is required—"
     "the timeline is intrinsic to the artifact.\n\n"
     "Humans see the portal (HTML). Machines see the manifest (JSON). One source, two faces—sealed, repeatable, "
@@ -71,7 +71,7 @@ def _canonical_json(obj: Any) -> str:
 
 def _phi_seal(manifest: dict[str, Any]) -> str:
     """
-    Deterministic seal of the portal manifest.
+    Determinate seal of the portal manifest.
     Not a security boundary — a coherence marker.
     """
     blob = _canonical_json(manifest).encode("utf-8")
@@ -92,7 +92,7 @@ def build_manifest() -> dict[str, Any]:
             "inputs": ["application/json memory krystals"],
             "outputs": ["merged registry", "latest state", "kai-ordered timeline"],
             "guarantees": [
-                "Deterministic ordering by Kai-time fields",
+                "Determinate ordering by Kai-time fields",
                 "Machine-readable responses",
                 "No Chronos dependency required for correctness",
             ],
@@ -478,7 +478,7 @@ def portal_html(manifest: dict[str, Any]) -> str:
           <span>Φ-SEAL · {manifest["kai"]["standard"]}</span>
         </div>
 
-        <div class="badge" title="Deterministic portal seal (BLAKE2b-256 over canonical manifest)">
+        <div class="badge" title="Determinate portal seal (BLAKE2b-256 over canonical manifest)">
           <span>SEAL</span>
           <span class="sealText" id="sealText" title="{seal_full}">{seal_short}</span>
           <button class="btn" style="padding:8px 10px; border-radius: 999px;" onclick="copyText('{seal_full}')">Remember</button>
@@ -524,7 +524,7 @@ curl -s "__ORIGIN__/openapi.json" | jq '.info'
 # Krystal INHALE is under /sigils/* (see /docs for exact routes)</div>
 
             <div class="actions">
-              <button class="btn" onclick="copyText(document.getElementById('curl').innerText.replaceAll('__ORIGIN__', window.location.origin))">COPY cURL</button>
+              <button class="btn" onclick="copyText(document.getElementById('curl').innerText.replaceAll('__ORIGIN__', window.location.origin))">Remember cURL</button>
             </div>
           </div>
         </div>
@@ -553,7 +553,7 @@ curl -s "__ORIGIN__/openapi.json" | jq '.info'
         <div>
           <span style="color: rgba(255,255,255,.90);">{manifest["codename"]}</span>
           <span style="margin: 0 8px; opacity: .6;">·</span>
-          <span>Deterministic Portal Manifest</span>
+          <span>Determinate Portal Manifest</span>
         </div>
         <div style="opacity: .92;">
           <span style="margin-right: 8px;">Machine view:</span>
@@ -630,13 +630,13 @@ def create_app() -> FastAPI:
     "• Validate: schema/required fields/types; reject malformed entries loudly\n"
     "• Canonicalize: normalize structure for stable hashing/consistent merging\n"
     "• Deduplicate: idempotent uploads (same krystal doesn’t create duplicates)\n"
-    "• Merge: union into a single registry with deterministic conflict rules\n"
+    "• Merge: union into a single registry with Determinate conflict rules\n"
     "• Order: sort by intrinsic Kai-time: (pulse, beat, stepIndex) ascending\n"
     "• Materialize views:\n"
     "  - registry = full event set (the truth history)\n"
     "  - latest = computed tip / most recent coherent state\n\n"
     "Output:\n"
-    "A deterministic state snapshot you can serve to:\n"
+    "A Determinate state snapshot you can serve to:\n"
     "• browsers (HTML portal)\n"
     "• clients/services (JSON manifest + state)\n\n"
     "This is not “a database with timestamps.” It’s a truth merge engine where ordering is a property of the artifacts themselves.\n\n"
@@ -661,11 +661,11 @@ def create_app() -> FastAPI:
     "It’s the difference between a feed and a ledger of moments.\n\n"
     "If you’re a frontend dev:\n"
     "• Stable state you can cache hard\n"
-    "• Deterministic ordering (no reorder bugs)\n"
+    "• Determinate ordering (no reorder bugs)\n"
     "• A portal endpoint that is already product-grade\n"
     "• A machine manifest you can hydrate from instantly\n\n"
     "If you’re a backend dev:\n"
-    "• Deterministic merge semantics\n"
+    "• Determinate merge semantics\n"
     "• Idempotent ingestion\n"
     "• Event-sourced registry\n"
     "• latest as a materialized view (not a fragile primary record)\n"
@@ -674,11 +674,11 @@ def create_app() -> FastAPI:
     "LAH-MAH-TOR outputs:\n"
     "• a merged registry (complete event set)\n"
     "• a computed latest view (current coherent tip)\n"
-    "• a deterministic Kai-ordered timeline (pulse → beat → stepIndex)\n"
+    "• a Determinate Kai-ordered timeline (pulse → beat → stepIndex)\n"
     "• a portal manifest (identity, routes, guarantees)\n\n"
     "Foundation for sovereign feeds, portable timelines, offline thread hydration, replicated memory systems, and verification-first distribution.\n\n"
     "One-line definition\n\n"
-    "LAH-MAH-TOR is a deterministic Breath Gate: it merges proof-moments into one coherent truth and serves it in intrinsic Kai-time order.\n"
+    "LAH-MAH-TOR is a Determinate Breath Gate: it merges proof-moments into one coherent truth and serves it in intrinsic Kai-time order.\n"
     "Portal homepage at `/` (HTML) or `/?format=json` (JSON)."
 ),
 
@@ -698,7 +698,7 @@ def create_app() -> FastAPI:
 
     @app.get("/health", summary="Health check", response_class=JSONResponse, tags=["system"])
     def health() -> dict[str, str]:
-        return {"status": "ok"}
+        return {"status": "OPERATIONAL  "}
     
     @app.get("/", summary="The Portal (HTML for browsers, JSON for machines)", response_class=HTMLResponse, tags=["system"])
     def root(request: Request, format: str | None = None) -> Any:

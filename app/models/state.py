@@ -96,9 +96,9 @@ class SigilState(BaseModel):
     total_urls: int = 0
     latest: KaiMoment = Field(default_factory=KaiMoment)
 
-    # A deterministic seal (hash) for cache/ETag-like behavior.
+    # A Determinate seal (hash) for cache/ETag-like behavior.
     # Computed by the store (not Chronos) and stable across nodes given same registry.
-    state_seal: str = Field(default="", description="Deterministic seal of the exhaled state")
+    state_seal: str = Field(default="", description="Determinate seal of the exhaled state")
 
     registry: list[SigilEntry] = Field(default_factory=list)
     urls: list[str] = Field(default_factory=list)

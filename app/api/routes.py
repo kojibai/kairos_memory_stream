@@ -35,7 +35,7 @@ _MAX_INLINE_URLS = max(1, int(os.getenv("KAI_MAX_INLINE_URLS", "20000")))
 # ──────────────────────────────────────────────────────────────────────
 
 class SealResponse(BaseModel):
-    seal: str = Field(..., description="Deterministic state seal (ETag candidate)")
+    seal: str = Field(..., description="Determinate state seal (ETag candidate)")
 
 
 class UrlsPageResponse(BaseModel):
@@ -236,7 +236,7 @@ async def inhale(
         # Merge off event loop
         report = await anyio.to_thread.run_sync(store.inhale_files, file_blobs)
 
-        # Deterministic seal/ETag
+        # Determinate seal/ETag
         seal = _store_seal(store)
         etag = _etag_from_seal(seal)
         _no_store_cache_headers(response, etag=etag)
@@ -281,7 +281,7 @@ async def inhale(
 
 @router.get(
     "/seal",
-    summary="Deterministic state seal (ETag candidate) — fast, Kai-only",
+    summary="Determinate state seal (ETag candidate) — fast, Kai-only",
     response_model=SealResponse,
     responses={304: {"description": "Not Modified"}},
 )

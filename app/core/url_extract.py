@@ -129,7 +129,7 @@ def _parse_token_to_obj(token: str) -> dict[str, Any]:
 
 def _canonicalize_parsed(u: ParseResult) -> str:
     """
-    Deterministic canonicalization, close to browser `new URL(...).toString()`:
+    Determinate canonicalization, close to browser `new URL(...).toString()`:
     - scheme + netloc are lowercased (URL semantics)
     - everything else preserved as-is
     """
@@ -319,7 +319,7 @@ def extract_many_payloads_from_any(obj: Any, *, base_origin: str) -> list[UrlPay
 
 
 def unique_by_url_key(hits: Iterable[UrlPayloadHit]) -> list[UrlPayloadHit]:
-    """Deterministic in-order unique by url_key."""
+    """Determinate in-order unique by url_key."""
     out: list[UrlPayloadHit] = []
     seen: set[str] = set()
     for h in hits:

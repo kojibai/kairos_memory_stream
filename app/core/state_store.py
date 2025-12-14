@@ -70,7 +70,7 @@ def _load_json_file_best_effort(path: Path) -> dict[str, Any] | None:
 
 def _compute_seal_from_urls(urls: list[str]) -> str:
     """
-    Deterministic seal for cache/ETag-like behavior (NOT a security boundary).
+    Determinate seal for cache/ETag-like behavior (NOT a security boundary).
     """
     blob = dumps_canonical_json({"urls": urls}).encode("utf-8")
     return hashlib.blake2b(blob, digest_size=16).hexdigest()
@@ -241,7 +241,7 @@ class SigilStateStore:
     def inhale_files(self, files: list[tuple[str, bytes]]) -> InhaleReport:
         """
         INHALE: merge uploaded krystal JSON files into the global registry.
-        Returns a deterministic report.
+        Returns a Determinate report.
         """
         with self._lock:
             report = inhale_files_into_registry(self._registry, files, base_origin=self.base_origin)
@@ -276,7 +276,7 @@ class SigilStateStore:
 
     def get_seal(self) -> str:
         """
-        Fast deterministic seal (ETag candidate). Cached.
+        Fast Determinate seal (ETag candidate). Cached.
         """
         with self._lock:
             self._ensure_urls_cache()

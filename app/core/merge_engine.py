@@ -34,7 +34,7 @@ def _is_missing(v: object) -> bool:
 
 def _richness_score(p: SigilPayloadLoose) -> int:
     """
-    Deterministic payload richness score:
+    Determinate payload richness score:
     - counts non-missing fields (including extras)
     - weights topology + identity slightly higher
     Used only for tie-breaks when Kai-time is equal.
@@ -79,7 +79,7 @@ def _canonicalize_topology(p: SigilPayloadLoose, *, base_origin: str) -> SigilPa
 
 def _merge_payload(prev: SigilPayloadLoose, inc: SigilPayloadLoose) -> SigilPayloadLoose:
     """
-    Deterministic merge:
+    Determinate merge:
     1) Prefer newer payload by Kai tuple (pulse, beat, stepIndex).
     2) If equal Kai tuple, prefer richer payload.
     3) Fill missing fields from the other payload (never overwrite existing non-missing).
@@ -187,7 +187,7 @@ def upsert_payload(
     payload: SigilPayloadLoose,
 ) -> bool:
     """
-    Upsert by URL key with deterministic merge rules.
+    Upsert by URL key with Determinate merge rules.
     Returns True if registry changed (insert or material update).
     """
     prev = reg.get(url_key)
@@ -291,7 +291,7 @@ def inhale_files_into_registry(
 
 def build_ordered_urls(reg: dict[str, SigilPayloadLoose]) -> list[str]:
     """
-    Deterministic SigilExplorer export:
+    Determinate SigilExplorer export:
     - Returns canonical URL keys sorted by Kai time DESC, tie-broken by URL string ASC.
     """
     items = list(reg.items())

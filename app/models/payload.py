@@ -77,7 +77,7 @@ class SigilPayloadLoose(BaseModel):
     def kai_tuple(self) -> tuple[int, int, int]:
         """
         Canonical Kai-time tuple. Missing fields collapse to 0.
-        Used for deterministic ordering and "newer wins" resolution.
+        Used for Determinate ordering and "newer wins" resolution.
         """
         p = int(self.pulse or 0)
         b = int(self.beat or 0)

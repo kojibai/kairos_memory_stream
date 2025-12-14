@@ -23,7 +23,7 @@ def loads_json_bytes(blob: bytes, *, name: str = "krystal.json") -> Any:
 
 def dumps_canonical_json(obj: Any) -> str:
     """
-    Deterministic JSON dump:
+    Determinate JSON dump:
     - sorted keys
     - no trailing spaces
     - stable separators
@@ -38,7 +38,7 @@ def dumps_canonical_json(obj: Any) -> str:
 
 
 def dumps_pretty_json(obj: Any) -> str:
-    """Human-friendly (still deterministic ordering)."""
+    """Human-friendly (still Determinate ordering)."""
     return json.dumps(
         obj,
         ensure_ascii=False,

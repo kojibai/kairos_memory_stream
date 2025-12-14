@@ -11,7 +11,7 @@ from app.models.payload import SigilPayloadLoose
 class KaiTuple:
     """
     Canonical Kai-time tuple (KKS-1.0).
-    Used for ordering and deterministic "newer vs older" decisions.
+    Used for ordering and Determinate "newer vs older" decisions.
 
     Ordering: higher is newer.
     """
@@ -89,7 +89,7 @@ def sort_by_kai_desc(
     payload_of: callable[[T], SigilPayloadLoose],
 ) -> list[T]:
     """
-    Deterministic sorting helper: most recent first by (pulse, beat, stepIndex).
+    Determinate sorting helper: most recent first by (pulse, beat, stepIndex).
 
     Example:
         sorted_entries = sort_by_kai_desc(entries, lambda e: e.payload)
